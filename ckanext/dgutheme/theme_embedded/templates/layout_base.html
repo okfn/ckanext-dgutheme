@@ -9,6 +9,11 @@
 
 <xi:include href="_util.html" />
 
+<?python 
+from pylons import config
+drupal_host = config.get('dgu.drupal_host', 'data.gov.uk')
+?>
+
 <head>
   <title>${page_title()} - ${g.site_title}</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -112,10 +117,10 @@
       <div id="login"> 
         <img src="/images/1x1.gif" alt="HM Government logo" id="logo_hm-government" class="sprite" /> 
         <span class="ckan-logged-out"> 
-          <a href="http://data.gov.uk/user">Log in</a> or <a href="http://data.gov.uk/user/register">sign up</a>
+          <a href="http://${drupal_host}/user">Log in</a> or <a href="http://${drupal_host}/user/register">sign up</a>
         </span>
         <span class="ckan-logged-in" style="display: none;">
-          You are logged-in as <a href="http://data.gov.uk/user"><span id="ckan_user_name">${c.user}</span></a>. <a href="http://data.gov.uk/logout">Log out</a>.
+          You are logged-in as <a href="http://${drupal_host}/user"><span id="ckan_user_name">${c.user}</span></a>. <a href="http://${drupal_host}/logout">Log out</a>.
         </span>
 <!--                  <span class="ckan_logged_out">
                     <a href="${h.url_for(controller='user',action='login', id=None)}">Login with ${h.icon('openid')} OpenID</a>
@@ -123,7 +128,7 @@
 -->
       </div>
       <div class="inner">
-         <a href="http://data.gov.uk/" id="logo_datagovuk" class="sprite" accesskey="1" title="Back to data.gov.uk homepage"><span>Back to data.gov.uk homepage</span></a>
+         <a href="http://${drupal_host}/" id="logo_datagovuk" class="sprite" accesskey="1" title="Back to data.gov.uk homepage"><span>Back to data.gov.uk homepage</span></a>
          <span id="slogan" class="sprite"><span>Opening up government data</span></span>
         <div id="site-description">${g.site_description}</div>
       
@@ -132,16 +137,16 @@
       <div id="navbar" class="clearfix">
          <div id="navbar-inner" class="clear-block region region-navbar">
           <a name="navigation" id="navigation"></a>
-            <ul id="navigation_primary" role="navigation" class="clearfix"><li class="menu-361 first home-icon"><a href="http://data.gov.uk/" title="Home">Home</a></li>
-              <li class="menu-364"><a href="http://data.gov.uk/data" title="">Data</a></li>
-              <li class="menu-366"><a href="http://data.gov.uk/apps" title="">Apps</a></li>
-              <li class="menu-367"><a href="http://data.gov.uk/ideas" title="">Ideas</a></li>
-              <li class="menu-118"><a href="http://data.gov.uk/forum" title="">Forum</a></li>
-              <li class="menu-1120"><a href="https://www.data.gov.uk/wiki/Main_Page" title="">Wiki</a></li>
-              <li class="menu-370"><a href="http://data.gov.uk/blog" title="">Blogs</a></li>
-              <li class="menu-6340"><a href="http://data.gov.uk/linked-data" title="Linked Data">Linked Data</a></li>
-              <li class="menu-368"><a href="http://data.gov.uk/resources" title="">Resources</a></li>
-              <li class="menu-6327 last"><a href="http://data.gov.uk/about" title="">About</a></li>
+            <ul id="navigation_primary" role="navigation" class="clearfix"><li class="menu-361 first home-icon"><a href="http://${drupal_host}/" title="Home">Home</a></li>
+              <li class="menu-364"><a href="http://${drupal_host}/data" title="">Data</a></li>
+              <li class="menu-366"><a href="http://${drupal_host}/apps" title="">Apps</a></li>
+              <li class="menu-367"><a href="http://${drupal_host}/ideas" title="">Ideas</a></li>
+              <li class="menu-118"><a href="http://${drupal_host}/forum" title="">Forum</a></li>
+              <li class="menu-1120"><a href="http://data.gov.uk/wiki" title="">Wiki</a></li>
+              <li class="menu-370"><a href="http://${drupal_host}/blog" title="">Blogs</a></li>
+              <li class="menu-6340"><a href="http://${drupal_host}/linked-data" title="Linked Data">Linked Data</a></li>
+              <li class="menu-368"><a href="http://${drupal_host}/resources" title="">Resources</a></li>
+              <li class="menu-6327 last"><a href="http://${drupal_host}/about" title="">About</a></li>
             </ul>
 <!--
             <ul id="navigation_primary" class="links clearfix">
@@ -199,15 +204,15 @@
 
     <div id="secondary" class="clear-block">
       <ul class="links">
-        <li class="first"><a href="http://data.gov.uk/terms-and-conditions" title="Terms / Privacy" accesskey="8">Terms and conditions</a></li>
-        <li><a href="http://data.gov.uk/code-conduct" title="Code of conduct">Code of conduct</a></li>
-        <li><a href="http://data.gov.uk/project" title="">Project Info</a></li>
-        <li><a href="http://data.gov.uk/faq" title="FAQ" accesskey="5">FAQ</a></li>
-        <li><a href="http://data.gov.uk/contact" title="Contact Us" accesskey="9">Contact us</a></li>
-        <li><a href="http://data.gov.uk/accessibility-statement" title="Accessibility Statement" accesskey="0">Accessibility</a></li>
-        <li><a href="http://data.gov.uk/moderation-policy" title="Moderation policy">Moderation policy</a></li>
-        <li><a href="http://data.gov.uk/privacy" title="Privacy">Privacy</a></li>
-        <li><a href="http://data.gov.uk/sitemap" title="" accesskey="3">Sitemap</a></li>
+        <li class="first"><a href="http://${drupal_host}/terms-and-conditions" title="Terms / Privacy" accesskey="8">Terms and conditions</a></li>
+        <li><a href="http://${drupal_host}/code-conduct" title="Code of conduct">Code of conduct</a></li>
+        <li><a href="http://${drupal_host}/project" title="">Project Info</a></li>
+        <li><a href="http://${drupal_host}/faq" title="FAQ" accesskey="5">FAQ</a></li>
+        <li><a href="http://${drupal_host}/contact" title="Contact Us" accesskey="9">Contact us</a></li>
+        <li><a href="http://${drupal_host}/accessibility-statement" title="Accessibility Statement" accesskey="0">Accessibility</a></li>
+        <li><a href="http://${drupal_host}/moderation-policy" title="Moderation policy">Moderation policy</a></li>
+        <li><a href="http://${drupal_host}/privacy" title="Privacy">Privacy</a></li>
+        <li><a href="http://${drupal_host}/sitemap" title="" accesskey="3">Sitemap</a></li>
         <li class="last">CKAN
                <span i18n:msg="version">
                   ${c.__version__}
