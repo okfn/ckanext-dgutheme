@@ -12,7 +12,7 @@ setup(
     zip_safe=False,
     author='Open Knowledge Foundation',
     author_email='info@okfn.org',
-    license='Presentation: UK Open Government Licence; Python: AGPL',
+    license='Presentation: GPLv2; Python: AGPL',
     url='http://ckan.org/',
     description='CKAN DGU theme extension',
     keywords='data packaging component tool server',
