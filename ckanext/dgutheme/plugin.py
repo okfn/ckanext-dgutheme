@@ -36,10 +36,10 @@ class EmbeddedThemePlugin(SingletonPlugin):
     implements(IConfigurer)
 
     def update_config(self, config):
-        configure_template_directory(config, 'theme_common/templates')
-        configure_public_directory(config, 'theme_common/public')
         configure_template_directory(config, 'theme_embedded/templates')
         configure_public_directory(config, 'theme_embedded/public')
+        configure_template_directory(config, 'theme_common/templates')
+        configure_public_directory(config, 'theme_common/public')
 
         config['package_form'] = 'package_gov3'
 
@@ -51,10 +51,31 @@ class IndependentThemePlugin(SingletonPlugin):
     implements(IConfigurer)
 
     def update_config(self, config):
-        configure_template_directory(config, 'theme_common/templates')
-        configure_public_directory(config, 'theme_common/public')
         configure_template_directory(config, 'theme_independent/templates')
         configure_public_directory(config, 'theme_independent/public')
+        configure_template_directory(config, 'theme_common/templates')
+        configure_public_directory(config, 'theme_common/public')
 
         config['package_form'] = 'package_gov3'
+
+class WalesThemePlugin(SingletonPlugin):
+    '''DGU/Wales Visual Theme for a CKAN install independent of dgu/Drupal.
+
+    '''
+    implements(IConfigurer)
+
+    def update_config(self, config):
+        configure_template_directory(config, 'theme_wales/templates')
+        configure_public_directory(config, 'theme_wales/public')
+        configure_template_directory(config, 'theme_independent/templates')
+        configure_public_directory(config, 'theme_independent/public')
+        configure_template_directory(config, 'theme_common/templates')
+        configure_public_directory(config, 'theme_common/public')
+
+        config['package_form'] = 'package_gov3'
+        if config.get('ckan.site_title') in ('CKAN', None):
+            config['ckan.site_title'] = 'Data Wales'
+        if not config.get('ckan.site_logo'):
+            config['ckan.site_logo'] = '/images/wales.jpg'
+        config['ckan.banner_logo'] = '/images/wag_logo.jpg'
 

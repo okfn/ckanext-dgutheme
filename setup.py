@@ -25,6 +25,7 @@ setup(
         [ckan.plugins]
         dgu_theme_embedded = ckanext.dgutheme.plugin:EmbeddedThemePlugin
         dgu_theme_independent = ckanext.dgutheme.plugin:IndependentThemePlugin
+#        dgu_theme_wales = ckanext.dgutheme.plugin:WalesThemePlugin
     """,
     test_suite = 'nose.collector',
 )
