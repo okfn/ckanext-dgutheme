@@ -5,6 +5,7 @@ syntax: glob
 ckanext_dgutheme.egg-info/*
 sandbox/*
 pip-log.txt
+*.swp
 
 # pylons
 data/*
