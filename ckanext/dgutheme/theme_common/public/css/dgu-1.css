@@ -14,7 +14,8 @@ div#content, div#footer-inner, div#secondary, #login, #header .inner {
   padding: 0 30px;
 }
 div#main {
-  padding-top: 20px;
+  padding-left: 30px;
+  padding-top: 0px;
   padding-right: 30px;
   overflow: hidden;
 }
@@ -124,7 +125,8 @@ html.js input.form-autocomplete {
   display: inline;
 }
 #navigation_primary {
-  padding: 0 0 0 30px;
+  padding-left: 30px;
+  height: 37px;
   margin: 0;
   border-top: 1px solid #A3C24B;
   color: white;
@@ -331,4 +333,12 @@ select, input, button, textarea, button {
 }
 #package-edit input.medium-width {
   width: 20em;
+}
+
+img#icon_page-title{
+	background-position:-40px -71px;
+  width:40px;
+	height:40px;
+	margin-right:10px;
+	vertical-align:-0.35em;
 }
