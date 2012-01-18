@@ -209,7 +209,7 @@ clear: both;
 visibility: hidden;
 }
 body.page-data #sidebar-right, body.page-apps #sidebar-right, body.page-ideas #sidebar-right {
-  width: 287px;
+  width: 200px;
 }
 div#sidebar-right, div#content-right {
   float: left;
@@ -363,7 +363,7 @@ div.view-ideas-featured .view-header,
 }
 
 h1.title, h2.title, h3.title {
-  margin: 0;
+  margin: 0 0 5px 0;
 }
 
 h2 {
@@ -408,5 +408,28 @@ div#content-bottom div.view-terms-count-data .view-header a, div.view-featured-d
   background: #EBEBEB url("/images/icon_map.gif") 15px 10px no-repeat;
   border-bottom: 1px solid lightGrey;
   clear: both;
+}
+
+div#content-top {
+  float: left;
+  width: 70%;
+  padding-right: 10px;
+}
+
+div#page-bottom {
+  clear: both;
+}
+
+div#block-views-data_featured_terms-block_2 {
+  float: right;
+}
+
+#block-views-publishers-block_1 {
+  display: inline-block;
+}
+
+#block-views-data_featured_terms-block_2 {
+  display: inline-block;
+  width: 186px;
 }
 
