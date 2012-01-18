@@ -15,7 +15,25 @@
       </div>
     </div>
 
-    <div py:match="//div[@id='content']" class="front-page">
+    <div py:match="//div[@id='content']">
+      <div class="content">
+        <div style="background: url('/images/gradient_heading.png') repeat-x; border-radius: 3px 3px 3px 3px; overflow: hidden; padding: 0; width: auto; height:30px;">
+          <h2 style="font-size: 1.4em;">PLACEHOLDER HEADING</h2>
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer et justo eget nisl volutpat suscipit. Etiam risus arcu, pulvinar vel vulputate a, varius a neque. In metus eros, dictum ut dapibus in, blandit vitae dolor. Donec suscipit elementum massa, vel consectetur magna dignissim nec.</p>
+        <br/>
+      </div>
+
+      <div class="content">
+        <div style="background: url(/images/gradient_heading.png) repeat-x; border-radius: 3px 3px 3px 3px; overflow: hidden; padding: 0; width: auto; height: 30px;">
+          <h2 style="font-size: 1.4em;">PLACEHOLDER HEADING</h2>
+        </div>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer et justo eget nisl volutpat suscipit. Etiam risus arcu, pulvinar vel vulputate a, varius a neque. In metus eros, dictum ut dapibus in, blandit vitae dolor. Donec suscipit elementum massa, vel consectetur magna dignissim nec.</p>
+      </div>
+    </div>
+
+
+    <!-- <div py:match="//div[@id='content']" class="front-page">
       <div class="span-24 last">
         <h1 class="title">
           <img src="/images/1x1.gif" id="icon_page-title"/>
@@ -73,7 +91,7 @@
           <strong>${group_dict['title']} has ${group_dict['packages']} datasets.</strong>
         </div>
       </py:for>
-  </div>
+  </div> -->
   <xi:include href="layout.html" />
 </html>
 
