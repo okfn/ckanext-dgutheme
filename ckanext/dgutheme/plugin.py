@@ -24,7 +24,7 @@ def configure_served_directory(config, relative_path, config_var):
     absolute_path = os.path.join(this_dir, relative_path)
     if absolute_path not in config.get(config_var, ''):
         if config.get(config_var):
-            config[config_var] += ',' + absolute_path
+            config[config_var] = absolute_path + ',' + config[config_var]
         else:
             config[config_var] = absolute_path
 
@@ -37,10 +37,10 @@ class EmbeddedThemePlugin(SingletonPlugin):
     implements(IRoutes)
 
     def update_config(self, config):
-        configure_template_directory(config, 'theme_embedded/templates')
-        configure_public_directory(config, 'theme_embedded/public')
         configure_template_directory(config, 'theme_common/templates')
         configure_public_directory(config, 'theme_common/public')
+        configure_template_directory(config, 'theme_embedded/templates')
+        configure_public_directory(config, 'theme_embedded/public')
 
         config['package_form'] = 'package_gov3'
 
