@@ -433,3 +433,18 @@ div#block-views-data_featured_terms-block_2 {
   width: 186px;
 }
 
+ul.datasets > li {
+  border-bottom: 1px solid #ECECEC;
+  list-style: none;
+  padding: 15px;
+}
+
+ul.dataset_formats,
+ul.openness {
+  display: none;
+}
+
+span.title {
+
+  font-size: 1.231em;
+}
