@@ -309,7 +309,6 @@ select, input, button, textarea, button {
 }
 #content tr td {
   border-top: 1px solid #E7E7E7;
-  padding: 6px 24px;
 }
 #content table {
   border: 1px solid #E7E7E7;
