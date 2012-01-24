@@ -74,6 +74,14 @@
         </div>
       </div>
 
+      <div id="login-box">
+          <div class="view-header">
+            <h2 class="title">Login</h2>
+          </div>
+            <a href="${h.url_for(controller='user', action='login')}">Log-in as publisher</a><br/>
+            <a href="${h.url_for(controller='user', action='register')}">Register as publisher</a>
+      </div>
+
     </div>
 
     <div py:match="//div[@id='content']" id="content-top">
