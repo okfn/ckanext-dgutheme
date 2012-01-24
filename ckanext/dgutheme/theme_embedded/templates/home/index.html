@@ -94,10 +94,9 @@
       </div>
       <div class="span-8 action-box">
         <div class="action-box-inner find">
-          <h1>Find data</h1>
-
           <form action="${h.url_for(controller='package', action='index')}" method="GET"> 
-            <input name="q" value="" class="search-field" placeholder="${_('Find datasets')}" /> 
+            <input name="q" type="text" maxlength="256" id="data-search" size="15" value="" title="Enter the terms you wish to search for." class="form-text" />
+            <input type="submit" name="op" id="data-search-submit" value="Search" class="form-submit"/>
           </form> 
           ${g.site_title} contains <a href="${h.url_for(controller='package')}">${c.package_count} datasets</a> that you can 
           browse, learn about and download. 

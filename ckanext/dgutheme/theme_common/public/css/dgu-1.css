@@ -447,3 +447,21 @@ span.title {
 
   font-size: 1.231em;
 }
+
+input#data-search {
+  padding: 8px;
+  width: 70%;
+  margin: 5px;
+}
+
+#data-search-submit {
+  background-color: #598200;
+  padding: 4px 5px;
+  color: white;
+  border: 0;
+  -moz-border-radius: 2px; /* FF1+ */
+  -webkit-border-radius: 2px; /* Saf3+, Chrome */
+  -khtml-border-radius: 2px; /* Konqueror */
+  border-radius: 2px; /* Standard. IE9 */
+  cursor: pointer;
+}
