@@ -117,10 +117,10 @@ drupal_host = config.get('dgu.drupal_host', 'data.gov.uk')
       <div id="login"> 
         <img src="/images/1x1.gif" alt="HM Government logo" id="logo_hm-government" class="sprite" /> 
         <span class="ckan-logged-out"> 
-          <a href="http://${drupal_host}/user">Log in</a> or <a href="http://${drupal_host}/user/register">sign up</a>
+          <a href="${h.url_for(controller='user', action='login')}">Log in</a> or <a href="${h.url_for(controller='user', action='register')}">sign up</a>
         </span>
         <span class="ckan-logged-in" style="display: none;">
-          You are logged-in as <a href="http://${drupal_host}/user"><span id="ckan_user_name">${c.user}</span></a>. <a href="http://${drupal_host}/logout">Log out</a>.
+          You are logged-in as <a href="${h.url_for(controller='user', action='me')}"><span id="ckan_user_name">${c.user}</span></a>. <a href="/user/logout">Log out</a>.
         </span>
 <!--                  <span class="ckan_logged_out">
                     <a href="${h.url_for(controller='user',action='login', id=None)}">Login with ${h.icon('openid')} OpenID</a>
