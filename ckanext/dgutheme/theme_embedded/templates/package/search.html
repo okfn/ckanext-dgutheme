@@ -29,6 +29,8 @@
     ${facet_sidebar('tags')}
     ${facet_sidebar('res_format')}
     ${facet_sidebar('groups', label=h.group_name_to_title)}
+    ${facet_sidebar('resource-type', title=lambda n: 'UKLP Dataset Type')}
+    ${facet_sidebar('INSPIRE', label=lambda n: 'INSPIRE', title=lambda n: 'UKLP')}
 
     <li class="widget-container widget_text">
         <h4>Other access</h4>
