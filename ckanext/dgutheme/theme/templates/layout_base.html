@@ -168,6 +168,7 @@ drupal_host = config.get('dgu.drupal_host', 'data.gov.uk')
         <div id="content">
           <div id="content-inner">
             <div id="content-header">
+              <h1 py:if="defined('page_heading')" class="page_heading">${page_heading()}</h1>
             </div> <!-- /#content-header -->
             <div id="content-area">
               <div id="node-3" class="node node-type-page">
