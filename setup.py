@@ -23,9 +23,7 @@ setup(
     package_data={'ckan': ['i18n/*/LC_MESSAGES/*.mo']},
     entry_points="""
         [ckan.plugins]
-        dgu_theme_embedded = ckanext.dgutheme.plugin:EmbeddedThemePlugin
-        dgu_theme_independent = ckanext.dgutheme.plugin:IndependentThemePlugin
-#        dgu_theme_wales = ckanext.dgutheme.plugin:WalesThemePlugin
+        dgu_theme = ckanext.dgutheme.plugin:ThemePlugin
     """,
     test_suite = 'nose.collector',
 )
