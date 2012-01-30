@@ -72,7 +72,6 @@
       </a>
     </li>
 
-
     <li id="share_your_app">
       <a href="${g.site_url}/node/add/apps">Share your app</a>
     </li>
@@ -81,6 +80,10 @@
     </li>
     <li id="data_request">
       <a href="${g.site_url}/data/requests">Request new data</a>
+    </li>
+
+    <li id="feedback" class="instruction-needed" title="How's this implemented currently.  Is it something we need to disintegrate from drupal?">
+      <a href="${h.url_for(controller='package', action='read', id=c.pkg_dict.get('name'))}/feedback">Give feedback to department</a>
     </li>
 
     <li py:if="c.pkg.get_groups()" class="sidebar-section">
