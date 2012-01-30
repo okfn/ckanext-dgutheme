@@ -15,63 +15,21 @@
       </div>
 
       <div class="content">
-        <div class="view view-terms-count-data view-id-terms_count_data view-display-id-block_2 view-dom-id-1 view-id-display-id-terms_count_data-block_2">
           <div class="view-header">
             <h2 class="title">Popular tags</h2>
-            <a href="/data/tag" class="viewall">View all tags</a>
+            <div id="tagcloud">
+              <?python
+                import random
+                tags = h.facet_items(c, 'tags', limit=20)
+                random.shuffle(tags)
+              ?>
+              <py:for each="tag_name, count in tags">
+                <a class="tag" rel="${count}" title="${count}" href="/dataset?tags=${tag_name}">${tag_name}</a>
+              </py:for>
+            </div>
+            <a href="/tags" class="viewall">View all tags</a>
           </div>
   
-          <div class="view-content">
-
-            <div class="views-row views-row-1 views-row-odd views-row-first">
-              <div class="views-field-tid-1">
-                <span class="field-content"><span class="field-content"><a href="/dataset?tags=health">&nbsp;health&nbsp;</a></span></span>
-              </div>
-            </div>
-
-            <div class="views-row views-row-2 views-row-even">
-              <div class="views-field-tid-1">
-                <span class="field-content"><span class="field-content"><a href="/dataset?tags=care">&nbsp;care&nbsp;</a></span></span>
-              </div>
-            </div>
-
-            <div class="views-row views-row-3 views-row-odd">
-              <div class="views-field-tid-1">
-                <span class="field-content"><span class="field-content"><a href="/dataset?tags=transparency">&nbsp;transparency&nbsp;</a></span></span>
-              </div>
-            </div>
-
-            <div class="views-row views-row-4 views-row-even">
-              <div class="views-field-tid-1">
-                <span class="field-content"><span class="field-content"><a href="/dataset?tags=child">&nbsp;child&nbsp;</a></span></span>
-              </div>
-            </div>
-
-            <div class="views-row views-row-5 views-row-odd">
-              <div class="views-field-tid-1">
-                <span class="field-content"><span class="field-content"><a href="/dataset?tags=communities">&nbsp;communities&nbsp;</a></span></span>
-              </div>
-            </div>
-  
-            <div class="views-row views-row-6 views-row-even">
-              <div class="views-field-tid-1">
-                <span class="field-content"><span class="field-content"><a href="/dataset?tags=children">&nbsp;children&nbsp;</a></span></span>
-              </div>
-            </div>
-
-            <div class="views-row views-row-7 views-row-odd">      
-              <div class="views-field-tid-1">
-                <span class="field-content"><span class="field-content"><a href="/dataset?tags=finance">&nbsp;finance&nbsp;</a></span></span>
-              </div>
-            </div>
-  
-            <div class="views-row views-row-8 views-row-even views-row-last">
-              <div class="views-field-tid-1">
-                <span class="field-content"><span class="field-content"><a href="/dataset?tags=disclosure">&nbsp;disclosure&nbsp;</a></span></span>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       <div id="login-side">
@@ -591,6 +549,19 @@
         </div>
       </py:for>
   </div> -->
+  <head py:match="head">
+      ${select('*')}
+      <script type="text/javascript" src="${g.site_url}/scripts/vendors/jquery.tagcloud.js"></script>
+      <script type="text/javascript" charset="utf-8">
+        $(document).ready(function(){
+          $.fn.tagcloud.defaults = {
+            size: {start: 8, end: 18, unit: "pt"}, 
+            color: {start: '#6bb247', end: '#000'}
+          };
+          $("#tagcloud a").tagcloud();
+        });
+      </script>
+  </head>
   <xi:include href="layout.html" />
 </html>
 

@@ -228,7 +228,8 @@ div#sidebar-right, div#content-right {
 #block-block-30, #block-block-33, #block-block-34 {
   width: 287px;
   overflow: hidden;
-  background: #819C9B;
+  /*background: #819C9B; Original colour, for reference*/
+  background: #D9E1E1;
 }
 #block-block-30 p, #block-block-33 p, #block-block-34 p {
 font-size: 1.077em;
@@ -464,4 +465,19 @@ input#data-search {
   -khtml-border-radius: 2px; /* Konqueror */
   border-radius: 2px; /* Standard. IE9 */
   cursor: pointer;
+}
+
+div#tagcloud {
+  clear: both;
+}
+
+div#tagcloud a {
+  text-decoration: none;
+  text-align: center;
+  border: none;
+  vertical-align: middle;
+}
+
+div#tagcloud a:hover {
+  text-decoration: underline;
 }
