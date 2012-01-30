@@ -95,8 +95,10 @@
       </ul>
     </li>
 
-    <li py:if="c.package_relationships" class="sidebar-section">
-      <h3>Related Datasets</h3>
+    <li class="sidebar-section">
+    <!-- <li py:if="c.package_relationships" class="sidebar-section"> -->
+      <h3 class="instruction-needed" title="How are these currently generated?  Is it something that we'll migrate over?">Related Datasets</h3>
+      <p>Place holder</p>
       <ul class="related-datasets">
         <py:for each="pkg, relationship_str, comment in c.package_relationships">
           <li>
