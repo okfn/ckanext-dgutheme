@@ -36,6 +36,7 @@ drupal_host = config.get('dgu.drupal_host', 'data.gov.uk')
   <link rel="shortcut icon" href="http://data.gov.uk/sites/default/files/datagovuk_favicon.png" type="image/x-icon" />
   <link type="text/css" rel="stylesheet" media="all" href="http://assets.okfn.org/kforge/css/pagination.css" />
   <link type="text/css" rel="stylesheet" media="all" href="/css/dgu-1.css" />
+  <link rel="stylesheet" href="${h.url_for('/scripts/vendor/jqueryui/1.8.14/css/jquery-ui.custom.css')}" type="text/css" media="screen, print" />
   <!--<link type="text/css" rel="stylesheet" media="print" href="/css/dgu-2.css" />-->
   <!--[if IE 7]>
     <link type="text/css" rel="stylesheet" media="all" href="http://data.gov.uk/sites/all/themes/datagovuk/css/ie7.css" />
@@ -54,6 +55,10 @@ drupal_host = config.get('dgu.drupal_host', 'data.gov.uk')
   <script type="text/javascript" src="${g.site_url}/scripts/vendors/jquery.tooltip.min.js"></script>
   
   <script type="text/javascript">
+    var CKAN = CKAN || {};
+    CKAN.SITE_URL = '${h.url('/')}';
+    // later use will add offsets with leading '/' so ensure no trailing slash
+    CKAN.SITE_URL = CKAN.SITE_URL.replace(/\/$/, '');
     $(document).ready(function() {
         var ckan_user = $.cookie("ckan_display_name");
         if (ckan_user) {
