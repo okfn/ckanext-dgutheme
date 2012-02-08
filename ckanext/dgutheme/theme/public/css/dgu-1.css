@@ -330,10 +330,10 @@ select, input, button, textarea, button {
   display: block;
 }
 #package-edit input.short {
-  width: 8em;
+  width: 6em;
 }
 #package-edit input.medium-width {
-  width: 20em;
+  width: 16em;
 }
 
 img#icon_page-title{
