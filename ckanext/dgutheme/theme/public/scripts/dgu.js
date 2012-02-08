@@ -10,5 +10,6 @@ jQuery(function ($) {
 
     $('.to-be-completed').addClass('js-tooltip-to-be-completed');
     $('.js-tooltip-to-be-completed').tooltip({'extraClass':'to-be-completed'});
+    
   });
 })
