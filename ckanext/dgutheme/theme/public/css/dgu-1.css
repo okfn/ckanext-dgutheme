@@ -499,3 +499,7 @@ div#tagcloud a:hover {
   background-color: #F5DA81;
   border: 2px solid #FFBF00;
 }
+
+#filter-heading {
+  border-top: white solid 15px;
+}
