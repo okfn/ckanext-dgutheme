@@ -41,6 +41,10 @@
         </py:if>
     </li>
 
+    <li py:if="h.check_access('package_update', {'id':c.pkg.id})">
+      <a href="${h.url_for(controller='package', action='edit', id=c.pkg.name)}">Edit</a>
+    </li>
+
     <li py:if="c.pkg_dict.get('tags')" class="sidebar-section">
       <h3>Tags</h3>
       ${tag_list(c.pkg_dict.get('tags', ''))}
