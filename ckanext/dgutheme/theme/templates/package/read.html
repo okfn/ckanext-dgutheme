@@ -90,11 +90,11 @@
       <a href="${h.url_for(controller='package', action='read', id=c.pkg_dict.get('name'))}/feedback">Give feedback to department</a>
     </li>
 
-    <li py:if="c.pkg.get_groups()" class="sidebar-section">
-      <h3>Groups</h3>
+    <li py:if="c.pkg.get_groups('publisher')" class="sidebar-section">
+      <h3>Publishers</h3>
       <ul class="groups">
         <li py:for="group in sorted(c.pkg.get_groups(), key=lambda g: g.display_name)">
-            <a href="${h.url_for(controller='group', action='read', id=group.name)}">${group.display_name}</a>
+            <a href="${h.url_for(controller='ckanext.dgu.controllers.publisher:PublisherController', action='read', id=group.name)}">${group.display_name}</a>
         </li>
       </ul>
     </li>
