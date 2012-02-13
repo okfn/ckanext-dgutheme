@@ -253,6 +253,9 @@ drupal_host = config.get('dgu.drupal_host', 'data.gov.uk')
       </ul>
     </div> <!-- /#secondary -->
   </div> <!-- /#page -->
+  <py:if test="defined('optional_footer')">
+    ${optional_footer()}
+  </py:if>
 
 ${h.literal(getattr(g, 'template_footer_end', ''))}
 </body>
