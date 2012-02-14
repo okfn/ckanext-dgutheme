@@ -544,3 +544,16 @@ div.flash-messages.warning {
     background-color: #006DCC;
 }
 
+/* Harvest pages */
+
+body.harvest #content{
+    width: 95%;
+}
+
+#show-inactive-sources-content{
+    width: 180px !important;
+}
+
+#show-inactive-sources-content label{
+    margin-top: 0 !important;
+}
