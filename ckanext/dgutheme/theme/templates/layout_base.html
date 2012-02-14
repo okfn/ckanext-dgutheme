@@ -9,7 +9,7 @@
 
 <xi:include href="_util.html" />
 
-<?python 
+<?python
 from pylons import config
 drupal_host = config.get('dgu.drupal_host', 'data.gov.uk')
 ?>
@@ -34,7 +34,7 @@ drupal_host = config.get('dgu.drupal_host', 'data.gov.uk')
   <!--[if IE]>
   <link rel="stylesheet" href="${g.site_url}/css/ie.css" type="text/css" media="screen, print" />
   <![endif]-->
-  
+
   <link rel="shortcut icon" href="http://data.gov.uk/sites/default/files/datagovuk_favicon.png" type="image/x-icon" />
   <link type="text/css" rel="stylesheet" media="all" href="${g.site_url}/css/pagination.css" />
   <link type="text/css" rel="stylesheet" media="all" href="${g.site_url}/scripts/vendor/jqueryui/1.8.14/css/jquery-ui.custom.css" />
@@ -45,7 +45,7 @@ drupal_host = config.get('dgu.drupal_host', 'data.gov.uk')
   <!--<link type="text/css" rel="stylesheet" media="print" href="/css/dgu-2.css" />-->
   <!--[if IE 7]>
     <link type="text/css" rel="stylesheet" media="all" href="http://data.gov.uk/sites/all/themes/datagovuk/css/ie7.css" />
-  <![endif]-->   
+  <![endif]-->
   <!--[if IE 6]>
     <link type="text/css" rel="stylesheet" media="all" href="http://data.gov.uk/sites/all/themes/datagovuk/css/ie6.css" />
   <![endif]-->
@@ -67,7 +67,7 @@ drupal_host = config.get('dgu.drupal_host', 'data.gov.uk')
 
   <!-- the tooltip js script can be removed once we're ready to deploy.  It's being used to highlight work in progress -->
   <script type="text/javascript" src="${g.site_url}/scripts/vendors/jquery.tooltip.min.js"></script>
-  
+
   <script type="text/javascript">
     var CKAN = CKAN || {};
     CKAN.SITE_URL = '${h.url('/')}';
@@ -80,7 +80,7 @@ drupal_host = config.get('dgu.drupal_host', 'data.gov.uk')
             $(".ckan-logged-in").show();
         }
         $('input[placeholder], textarea[placeholder]').placeholder();
-		$(".chzn-select").chosen();		
+		$(".chzn-select").chosen();
     });
   </script>
   <style type="text/css">
@@ -129,17 +129,29 @@ drupal_host = config.get('dgu.drupal_host', 'data.gov.uk')
 </head>
 
 <body class="${value_of('body_class', default=lambda: c.body_class)()} sidebar-right page-data">
-            
+
   <div id="page">
-    <ul id="accesslinks"> 
-      <li id="skip-to-nav"><a href="#navigation_primary">Skip to Navigation</a></li> 
-      <li id="skip-to-content"><a href="#content" accesskey="s">Skip to Content</a></li> 
+    <py:with vars="messages = list(h._flash.pop_messages())">
+    <div py:if="messages" class="flash-messages ${m.category}" py:for="m in messages">
+      <div>
+        ${h.literal(m)}
+		<a onclick="$('div.flash-messages').slideUp();return false;" href="javascript:void(0);" style="float:right; "><img src="${g.site_url}/images/close.png" style="margin-right:20px;" border="0"/></a>
+      </div>
+    </div>
+	<script type="text/javascript" py:if="messages">
+		setTimeout(function(){$("div.flash-messages").slideUp();}, 10000);
+	</script>
+    </py:with>
+
+    <ul id="accesslinks">
+      <li id="skip-to-nav"><a href="#navigation_primary">Skip to Navigation</a></li>
+      <li id="skip-to-content"><a href="#content" accesskey="s">Skip to Content</a></li>
     </ul>
 
-    <div id="header" role="banner"> 
-      <div id="login"> 
-        <img src="/images/1x1.gif" alt="HM Government logo" id="logo_hm-government" class="sprite" /> 
-        <span class="ckan-logged-out"> 
+    <div id="header" role="banner">
+      <div id="login">
+        <img src="/images/1x1.gif" alt="HM Government logo" id="logo_hm-government" class="sprite" />
+        <span class="ckan-logged-out">
           <a href="${h.url_for(controller='user', action='login')}">Log in</a> or <a href="${h.url_for(controller='user', action='register')}">sign up</a>
         </span>
         <span class="ckan-logged-in" style="display: none;">
@@ -154,8 +166,8 @@ drupal_host = config.get('dgu.drupal_host', 'data.gov.uk')
          <a href="http://${drupal_host}/" id="logo_datagovuk" class="sprite" accesskey="1" title="Back to data.gov.uk homepage"><span>Back to data.gov.uk homepage</span></a>
          <span id="slogan" class="sprite"><span>Opening up government data</span></span>
         <div id="site-description">${g.site_description}</div>
-      
-      
+
+
       </div> <!-- /#inner -->
       <div id="navbar" class="clearfix">
          <div id="navbar-inner" class="clear-block region region-navbar">
@@ -209,7 +221,7 @@ drupal_host = config.get('dgu.drupal_host', 'data.gov.uk')
           </div> <!-- /#content-inner -->
         </div> <!-- /#content -->
 
-      
+
         <div id="sidebar-right">
           <div id="sidebar-right-inner" class="region region-right">
             <div id="block-block-30" class="block block-block region-odd odd region-count-1 count-1">
@@ -217,20 +229,20 @@ drupal_host = config.get('dgu.drupal_host', 'data.gov.uk')
 
                 <primarysidebar>
                   <!-- Primary Side Bar Goes Here -->
-                  
+
                 </primarysidebar>
-  
+
               </div> <!-- /block-inner -->
             </div> <!-- /block -->
           </div> <!-- /#sidebar-right-inner -->
         </div> <!-- /#sidebar-right -->
-         
+
         <div id="page-bottom">
           <pagebottom>
 
           </pagebottom>
         </div>
-   
+
       </div> <!-- /#main-inner -->
     </div> <!-- /#main -->
 

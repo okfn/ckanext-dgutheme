@@ -241,7 +241,7 @@ padding: 0;
 #sidebar-right .block {
   margin-bottom: 20px;
 }
-div#sidebar-right li.widget-container { 
+div#sidebar-right li.widget-container {
   list-style-type: none;
 }
 div.node-inner h2, div#sidebar-right h2, div#block-data_gov_uk_custom-blogslist h2, div.view-blog-posts h2, h2#comments-title, body.section-search div#main h2, #content h2, #content h3 {
@@ -269,7 +269,7 @@ div.node-inner h2, div#sidebar-right h2, div#block-data_gov_uk_custom-blogslist 
   background-position: 0 -33px;
   margin-top: 7px;
 }
-#page #header { 
+#page #header {
   padding-top: 0;
   padding-bottom: 0;
 }
@@ -326,7 +326,7 @@ select, input, button, textarea, button {
   text-indent: -50000px;
   outline: none;
 }
-.clearfix { 
+.clearfix {
   display: block;
 }
 #package-edit input.short {
@@ -503,3 +503,31 @@ div#tagcloud a:hover {
 #filter-heading {
   border-top: white solid 15px;
 }
+
+
+div.flash-messages {
+  padding-left: 30px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 1.1em;
+  color: white;
+  font-weight: bold;
+
+}
+
+div.flash-messages.success {
+    background-color: #5BB75B;
+}
+
+div.flash-messages.error {
+    background-color: #DA4F49;
+}
+
+div.flash-messages.notice {
+    background-color: #49AFCD;
+}
+
+div.flash-messages.warning {
+    background-color: #006DCC;
+}
+

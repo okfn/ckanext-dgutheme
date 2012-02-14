@@ -17,9 +17,15 @@
         <li>${h.linked_user(admin)}</li>
       </ul>
     </div>
+
     ${facet_sidebar('tags')}
     ${facet_sidebar('res_format')}
+
+	<div py:if="c.userobj" class="facet-box" style="padding:8px; text-align: center;">
+		<a href="${h.url_for(controller='ckanext.dgu.controllers.publisher:PublisherController', action='apply', id=c.group.name)}">Add this publisher to your account</a>
+	</div>
   </py:match>
+
 
   <py:match path="content">
     <h3 py:if="c.group['state'] != 'active'">State: ${c.group['state']}</h3>
