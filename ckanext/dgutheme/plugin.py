@@ -3,7 +3,7 @@ import os
 from logging import getLogger
 
 from ckan.plugins import implements, SingletonPlugin
-from ckan.plugins import IConfigurer, IRoutes
+from ckan.plugins import IConfigurer, IRoutes, IPackageController
 import ckanext.dgutheme
 
 log = getLogger(__name__)
@@ -53,3 +53,59 @@ class ThemePlugin(SingletonPlugin):
     def after_map(self, map):
         return map
 
+class SearchPlugin(SingletonPlugin):
+    """
+    DGU-specific searching.
+
+    The only thing DGU specific about the search is that DGU facets on
+    whether a dataset's licenese_id is OGL (Open Government License) or not.
+    Since this is calcuable from the license_id, but is not a facet over the
+    whole set of possible license_id values (ie. 'ukcrown', 'other' etc. should
+    all be grouped together under the 'non-ogl' facet), we index on a field
+    that doesn't exist on the dataset itself.  See `SearchPlugin.before_index`.
+    """
+
+    implements(IPackageController)
+
+    def read(self, entity):
+        pass
+
+    def create(self, entity):
+        pass
+
+    def edit(self, entity):
+        pass
+
+    def authz_add_role(self, object_role):
+        pass
+    
+    def authz_remove_role(self, object_role):
+        pass
+
+    def delete(self, entity):
+        pass
+
+    def before_search(self, search_params):
+        return search_params
+
+    def after_search(self, search_results, search_params):
+        return search_results
+
+    def before_index(self, pkg_dict):
+        """
+        Dynamically creates a license_id-is-ogl field to index on.
+        """
+        if not pkg_dict.has_key('license_id-is-ogl'):
+            is_ogl = self._is_ogl(pkg_dict)
+            pkg_dict['license_id-is-ogl'] = is_ogl
+            pkg_dict['extras_license_id-is-ogl'] = is_ogl
+        return pkg_dict
+
+    def _is_ogl(self, pkg_dict):
+        """
+        Returns true iff the represented dataset has an OGL license
+
+        A dataset has an OGL license if the license_id is NULL or, if it
+        is equal to the string "uk-ogl".
+        """
+        return pkg_dict['license_id'] is None or pkg_dict['license_id'] == 'uk-ogl'

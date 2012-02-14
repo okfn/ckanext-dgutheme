@@ -24,6 +24,7 @@ setup(
     entry_points="""
         [ckan.plugins]
         dgu_theme = ckanext.dgutheme.plugin:ThemePlugin
+        dgu_search = ckanext.dgutheme.plugin:SearchPlugin
     """,
     test_suite = 'nose.collector',
 )

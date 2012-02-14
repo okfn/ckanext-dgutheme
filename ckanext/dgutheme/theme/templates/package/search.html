@@ -36,7 +36,7 @@
     ${facet_sidebar('groups', label=h.group_name_to_title)}
     ${facet_sidebar('resource-type', title=lambda n: 'UKLP Dataset Type')}
     ${facet_sidebar('UKLP', label=lambda n: 'UKLP', title=lambda n: 'UKLP')}
-    ${facet_sidebar('license_id', title=lambda n: 'License')}
+    ${facet_sidebar('license_id-is-ogl', title=lambda n: 'License', label=lambda n: 'OGL' if n == 'true' else 'Non-OGL')}
 
     <li class="widget-container widget_text">
         <h4>Other access</h4>
