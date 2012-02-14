@@ -10,20 +10,18 @@
   </py:def>
 
   <py:match path="primarysidebar">
-
     <div py:if="c.is_superuser_or_groupmember and c.administrators" class="facet-box">
 	  <h2>Administrators</h2>
       <ul class="property-list" py:for="admin in c.administrators">
         <li>${h.linked_user(admin)}</li>
       </ul>
     </div>
+	<div py:if="c.userobj and not c.userobj in c.administrators" class="facet-box" style="padding:8px; text-align: center;">
+		<a href="${h.url_for(controller='ckanext.dgu.controllers.publisher:PublisherController', action='apply', id=c.group.name)}">Add this publisher to your account</a>
+	</div>
 
     ${facet_sidebar('tags')}
     ${facet_sidebar('res_format')}
-
-	<div py:if="c.userobj" class="facet-box" style="padding:8px; text-align: center;">
-		<a href="${h.url_for(controller='ckanext.dgu.controllers.publisher:PublisherController', action='apply', id=c.group.name)}">Add this publisher to your account</a>
-	</div>
   </py:match>
 
 

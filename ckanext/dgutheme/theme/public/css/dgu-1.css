@@ -515,6 +515,19 @@ div.flash-messages {
 
 }
 
+div.search_results {
+    margin-top: 10px;
+}
+
+div.publisher_search_result {
+    text-align: left;
+    padding: 4px;
+    height: 14px;
+}
+div.publisher_search_result h4 {
+    font-size: 1.1em;
+}
+
 div.flash-messages.success {
     background-color: #5BB75B;
 }
