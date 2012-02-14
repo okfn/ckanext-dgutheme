@@ -52,15 +52,14 @@
 
 <?python
 	from ckan import model
+	from ckan.authz import Authorizer
+	groups = None
 	u = model.User.get(c.user_dict['id'])
-	capacity = 'editor'
-
-	if len( c.userobj.get_groups('publisher') ) > 0:
-		capacity = None
-	groups = u.get_groups('publisher', capacity=capacity )
+	if len( c.userobj.get_groups('publisher') ) > 0 or Authorizer().is_sysadmin(c.user):
+		groups = u.get_groups('publisher' )
 ?>
 
-	<div class="row listing">
+	<div py:if="groups" class="row listing">
 		<h2>Publishers</h2>
 		<ul>
 	   		<py:for each="group in groups">
