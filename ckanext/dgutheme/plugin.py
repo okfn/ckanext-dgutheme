@@ -1,3 +1,4 @@
+import re
 import os
 
 from logging import getLogger
@@ -57,12 +58,15 @@ class SearchPlugin(SingletonPlugin):
     """
     DGU-specific searching.
 
-    The only thing DGU specific about the search is that DGU facets on
+    One thing DGU specific about the search is that DGU facets on
     whether a dataset's licenese_id is OGL (Open Government License) or not.
     Since this is calcuable from the license_id, but is not a facet over the
     whole set of possible license_id values (ie. 'ukcrown', 'other' etc. should
     all be grouped together under the 'non-ogl' facet), we index on a field
     that doesn't exist on the dataset itself.  See `SearchPlugin.before_index`.
+
+    Another thing that DGU does differently is that it cleans up the resource
+    formats prior to indexing.
     """
 
     implements(IPackageController)
@@ -93,13 +97,26 @@ class SearchPlugin(SingletonPlugin):
 
     def before_index(self, pkg_dict):
         """
-        Dynamically creates a license_id-is-ogl field to index on.
+        Dynamically creates a license_id-is-ogl field to index on, and clean
+        up resource formats prior to indexing.
         """
+        # Dynamically create the license_id-is-ogl field.
         if not pkg_dict.has_key('license_id-is-ogl'):
             is_ogl = self._is_ogl(pkg_dict)
             pkg_dict['license_id-is-ogl'] = is_ogl
             pkg_dict['extras_license_id-is-ogl'] = is_ogl
+
+        # Clean the resource formats prior to indexing
+        pkg_dict['res_format'] = [ self._clean_format(f) for f in pkg_dict.get('res_format', []) ]
+
         return pkg_dict
+
+    _disallowed_characters = re.compile(r'[^a-z]')
+    def _clean_format(self, format_string):
+        if isinstance(format_string, basestring):
+            return re.sub(self._disallowed_characters, '', format_string.lower())
+        else:
+            return format_string
 
     def _is_ogl(self, pkg_dict):
         """
