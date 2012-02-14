@@ -74,13 +74,13 @@ drupal_host = config.get('dgu.drupal_host', 'data.gov.uk')
     // later use will add offsets with leading '/' so ensure no trailing slash
     CKAN.SITE_URL = CKAN.SITE_URL.replace(/\/$/, '');
     $(document).ready(function() {
+		$(".chzn-select").chosen();
         var ckan_user = $.cookie("ckan_display_name");
         if (ckan_user) {
             $(".ckan-logged-out").hide();
             $(".ckan-logged-in").show();
         }
         $('input[placeholder], textarea[placeholder]').placeholder();
-		$(".chzn-select").chosen();
     });
   </script>
   <style type="text/css">

@@ -42,10 +42,24 @@
       <span class="hints">You can use <a href="http://daringfireball.net/projects/markdown/syntax" target="_blank">Markdown formatting</a> here.</span>
     </div></dd>
 
+    <dt class="parent-label" py:if="c.is_superuser_or_groupadmin">
+		<label class="field_opt" for="parent">Parent publisher</label>
+	</dt>
+
+    <dd class="parent-field" py:if="c.is_superuser_or_groupadmin">
+		<select id="parent" name="parent" class="chzn-select" data-placeholder="Please choose a publisher">
+			<option value=""></option>
+    		<py:for each="pg in c.possible_parents">
+				<option py:attrs="{'selected': 'selected' if c.parent and pg.id == c.parent.id else None}" value="${pg.id}">${pg.title}</option>
+			</py:for>
+		</select>
+	</dd>
+
+
 
     <dt class="state-label" py:if="c.is_sysadmin or c.auth_for_change_state"><label class="field_opt" for="state">State</label></dt>
     <dd class="state-field" py:if="c.is_sysadmin or c.auth_for_change_state">
-    <select id="state" name="state" >
+    <select id="state" name="state" class="chzn-select" style="width:100px;">
       <option py:attrs="{'selected': 'selected' if data.get('state') == 'active' else None}" value="active">active</option>
       <option py:attrs="{'selected': 'selected' if data.get('state') == 'deleted' else None}" value="deleted">deleted</option>
     </select>
@@ -136,4 +150,8 @@
     <input id="cancel" class="pretty-button href-action" name="cancel" type="reset" value="${_('Cancel')}" action="${h.url_for(controller='ckanext.dgu.controllers.publisher:PublisherController', action='read', id=c.group.name)}" />
   </py:if>
 </div>
+
+<script>
+	$(".chzn-select").chosen();
+</script>
 </form>
