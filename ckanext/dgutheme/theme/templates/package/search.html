@@ -35,6 +35,18 @@
     ${facet_sidebar('res_format', title=lambda n:'Resource Format', if_empty='There are no further resource format filters to apply.')}
     ${facet_sidebar('groups', label=h.group_name_to_title, if_empty='There are no further publisher filters to apply.')}
 
+    <!-- Create a nested list of UKLP filters -->
+    <div class="facet-box">
+      <h2>UKLP Dataset Type</h2>
+      <ul py:if="len(h.facet_items(c, 'resource-type'))">
+        ${facet_list_items('UKLP', label=lambda n: 'UKLP', if_empty='UKLP')}
+        <ul class="facet-options">
+          ${facet_list_items('resource-type')}
+        </ul>
+      </ul>
+      <p py:if="not len(h.facet_items(c, 'resource-type'))">There are no further UKLP filters to apply.</p>
+    </div>
+
     ${facet_sidebar('license_id-is-ogl', title=lambda n: 'License', label=lambda n: 'Open Government License' if n == 'true' else 'Non-Open Government License', if_empty='There are no further license filters to apply.')}
 
     <li class="widget-container widget_text">
