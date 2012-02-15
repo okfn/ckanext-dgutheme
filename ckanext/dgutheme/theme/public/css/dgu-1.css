@@ -557,3 +557,7 @@ body.harvest #content{
 #show-inactive-sources-content label{
     margin-top: 0 !important;
 }
+
+.harvest-source-title{
+    display:none;
+}
