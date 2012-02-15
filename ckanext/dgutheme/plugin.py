@@ -67,6 +67,9 @@ class SearchPlugin(SingletonPlugin):
 
     Another thing that DGU does differently is that it cleans up the resource
     formats prior to indexing.
+
+    A further thing that DGU does differently is to index the group title, as
+    well as the group name.
     """
 
     implements(IPackageController)
@@ -100,6 +103,8 @@ class SearchPlugin(SingletonPlugin):
         Dynamically creates a license_id-is-ogl field to index on, and clean
         up resource formats prior to indexing.
         """
+        from ckan.model.group import Group
+
         # Dynamically create the license_id-is-ogl field.
         if not pkg_dict.has_key('license_id-is-ogl'):
             is_ogl = self._is_ogl(pkg_dict)
@@ -108,6 +113,10 @@ class SearchPlugin(SingletonPlugin):
 
         # Clean the resource formats prior to indexing
         pkg_dict['res_format'] = [ self._clean_format(f) for f in pkg_dict.get('res_format', []) ]
+
+        # Populate group titles
+        if not pkg_dict.has_key('group_titles'):
+            pkg_dict['group_titles'] = [Group.get(g.title) for g in pkg_dict['groups']]
 
         return pkg_dict
 
