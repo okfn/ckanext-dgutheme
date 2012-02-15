@@ -50,7 +50,11 @@
 			${h.markdown_extract(package.notes)}
 		</div>
         <div class="owners">
-            <p><span class="to-be-completed js-tooltip-to-be-completed" title="Once the publisher information is integrated with the datasets, this will link to the publisher.  Right now, it just contains the contents of the author field."><b>Publisher:</b></span> ${package.get('author', '')}</p>
+            <p><b>Publisher:</b>
+              <a href="${h.url_for(controller='ckanext.dgu.controllers.publisher:PublisherController', action='read', id=package.get('groups', [{}])[0].get('name', ''))}">
+                ${package.get('groups', [{}])[0].get('title', '')}
+              </a>
+            </p>
             <?python
                 uklps = [d for d in package.get('extras', {}) if d['key'] == 'UKLP']
                 is_uklp = uklps[0]['value'] == '"True"' if len(uklps) else False
