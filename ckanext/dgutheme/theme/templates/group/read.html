@@ -20,8 +20,7 @@
 		<a href="${h.url_for(controller='ckanext.dgu.controllers.publisher:PublisherController', action='apply', id=c.group.name)}">Add this publisher to your account</a>
 	</div>
 
-    ${facet_sidebar('tags')}
-    ${facet_sidebar('res_format')}
+    ${facet_filters()}
   </py:match>
 
 
