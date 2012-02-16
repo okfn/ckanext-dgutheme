@@ -131,7 +131,10 @@ class SearchPlugin(SingletonPlugin):
         """
         Returns true iff the represented dataset has an OGL license
 
-        A dataset has an OGL license if the license_id is NULL or, if it
-        is equal to the string "uk-ogl".
+        A dataset has an OGL license if the license_id == "uk-ogl"
+        or if it's a UKLP dataset with "Open Government License" in the
+        access_contraints extra field.
         """
-        return pkg_dict['license_id'] is None or pkg_dict['license_id'] == 'uk-ogl'
+        regex = re.compile(r'open government licen[sc]e', re.IGNORECASE)
+        return pkg_dict['license_id'] == 'uk-ogl' or \
+               bool(regex.search(pkg_dict.get('extras_access_constraints', '')))
