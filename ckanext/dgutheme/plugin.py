@@ -116,7 +116,7 @@ class SearchPlugin(SingletonPlugin):
 
         # Populate group titles
         if not pkg_dict.has_key('group_titles'):
-            pkg_dict['group_titles'] = [Group.get(g.title) for g in pkg_dict['groups']]
+            pkg_dict['group_titles'] = [Group.get(g).title for g in pkg_dict['groups']]
 
         return pkg_dict
 
