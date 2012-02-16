@@ -59,9 +59,11 @@
 		groups = u.get_groups('publisher' )
 ?>
 
-	<div py:if="groups" class="row listing">
+	<div class="row listing">
 		<h2>Publishers</h2>
-		<ul>
+		<a py:if="c.user == c.user_dict['name']" href="${h.url_for(controller='ckanext.dgu.controllers.publisher:PublisherController', action='apply')}">Add a publisher to your account</a>
+
+		<ul py:if="groups">
 	   		<py:for each="group in groups">
 				<li>
 					<a href="/publisher/${group.name}">${group.title}</a>
