@@ -61,13 +61,22 @@
               </a>
             </p>
             <?python
+                display_provider = False
                 uklps = [d for d in package.get('extras', {}) if d['key'] == 'UKLP']
                 is_uklp = uklps[0]['value'] == '"True"' if len(uklps) else False
                 if is_uklp:
+                    display_provider = True
                     providers = [d for d in package.get('extras', {}) if d['key'] == 'provider']
                     provider = providers[0]['value'] if len(providers) else ''
+                else:
+                    published_vias = [d for d in package.get('extras', {}) if d['key'] == 'published_via']
+                    published_bys = [d for d in package.get('extras', {}) if d['key'] == 'published_by']
+                    is_published_via = published_vias and published_vias[0]['value'] != '""'
+                    if is_published_via and published_bys:
+                        display_provider = True
+                        provider = published_bys[0]['value']
             ?>
-            <p py:if="is_uklp"><b>Provider:</b> ${provider}</p>
+            <p py:if="display_provider"><b>Provider:</b> ${provider}</p>
         </div>
         <!--ul py:if="package.tags" class="tags">
           <li py:for="tag in package.tags">${tag.name}</li>
